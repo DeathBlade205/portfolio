@@ -1,26 +1,148 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   THEME TOKENS — editorial paper / ink, electric-blue accent.
+   Default = light. [data-theme="dark"] overrides.
+   ============================================================ */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --paper: #f2f0e9;
+  --ink: #16150f;
+  --surf: #e8e5da;
+  --line: #d8d5cb;
+  --mut: #76736a;
+  --accent: #2b27ff;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #131210;
+  --ink: #efece2;
+  --surf: #1d1b17;
+  --line: #2c2a24;
+  --mut: #8f8c82;
+  --accent: #2b27ff;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-surf: var(--surf);
+  --color-line: var(--line);
+  --color-mut: var(--mut);
+  --color-accent: var(--accent);
+
+  --font-sans: var(--font-grotesk);
+  --font-serif: var(--font-instrument);
+  --font-mono: var(--font-spacemono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================================
+   BASE
+   ============================================================ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-grotesk), system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes sg-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes sg-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes sg-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+@keyframes sg-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.sg-marquee {
+  animation: sg-marquee 26s linear infinite;
+}
+.sg-spin {
+  animation: sg-spin 14s linear infinite;
+}
+.sg-pulse {
+  animation: sg-pulse 2.4s ease-in-out infinite;
+}
+.sg-rise {
+  animation: sg-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+  }
 }

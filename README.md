@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sadat Sagar — Portfolio
 
-## Getting Started
+Personal portfolio site for Sadat Sagar, a Full Stack Developer based in Sydney.
+Built with **Next.js 15** (App Router), **React 19**, **TypeScript**, and **Tailwind CSS v4**.
 
-First, run the development server:
+## Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Other scripts: `npm run build`, `npm run start`, `npm run lint`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+  layout.tsx            # metadata, fonts, SEO/OpenGraph
+  page.tsx              # assembles the page sections
+  globals.css           # theme tokens, animations, ambient background
+  lib/data.ts           # single source of truth for all content
+  components/
+    Nav.tsx             # sticky nav + mobile menu (client)
+    Hero.tsx
+    About.tsx
+    ExperienceSection.tsx
+    Projects.tsx
+    Skills.tsx          # skills + education
+    Contact.tsx
+    Reveal.tsx          # scroll-reveal wrapper (IntersectionObserver)
+    SectionHeading.tsx
+    icons.tsx
+public/
+  Sadat_Sagar_Resume.pdf
+```
 
-## Learn More
+## Editing content
 
-To learn more about Next.js, take a look at the following resources:
+All copy (bio, experience, projects, skills, education, links) lives in
+[`app/lib/data.ts`](app/lib/data.ts) — edit there and every section updates.
+To refresh the downloadable resume, replace `public/Sadat_Sagar_Resume.pdf`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deploys to Vercel. `next.config.ts` pins the workspace root to this directory
+to avoid resolving a mismatched Next version from a parent lockfile.
