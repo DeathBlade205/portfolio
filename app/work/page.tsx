@@ -51,7 +51,7 @@ export default function WorkPage() {
                       <h2 className="m-0 font-semibold leading-[0.95] tracking-[-0.025em] text-[clamp(34px,5vw,72px)]">
                         {project.title}
                       </h2>
-                      <div className="mt-2 font-serif text-[21px] italic text-mut">
+                      <div className="mt-2 font-serif text-[18px] italic text-mut sm:text-[21px]">
                         {project.subtitle}
                       </div>
                     </div>

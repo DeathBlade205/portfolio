@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Space_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { profile } from "./lib/data";
@@ -45,10 +45,17 @@ export const metadata: Metadata = {
     siteName: profile.name,
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${profile.name} — ${profile.role}`,
     description,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f2f0e9" },
+    { media: "(prefers-color-scheme: dark)", color: "#131210" },
+  ],
 };
 
 const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;

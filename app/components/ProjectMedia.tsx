@@ -20,8 +20,12 @@ export default function ProjectMedia({
 }) {
   const [errored, setErrored] = useState(false);
   const showImage = src && !errored;
+  // Mobile keeps the screenshot's shape via aspect-ratio; larger screens get a
+  // fixed editorial height with object-cover cropping.
   const height =
-    size === "lg" ? "h-[320px] sm:h-[540px]" : "h-[280px] sm:h-[460px]";
+    size === "lg"
+      ? "aspect-[4/3] sm:aspect-auto sm:h-[540px]"
+      : "aspect-[4/3] sm:aspect-auto sm:h-[460px]";
 
   return (
     <div

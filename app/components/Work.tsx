@@ -12,7 +12,7 @@ function hostOf(url: string) {
 export default function Work() {
   return (
     <section id="work" className="px-5 pb-10 pt-20 sm:px-10 sm:pt-20">
-      <div className="mb-12 flex items-baseline justify-between">
+      <div className="mb-12 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
         <h2 className="m-0 font-semibold leading-none tracking-[-0.02em] text-[clamp(30px,5vw,68px)]">
           Selected Work
         </h2>
@@ -38,7 +38,7 @@ export default function Work() {
                 <div className="font-semibold leading-none tracking-[-0.02em] text-[clamp(26px,3.4vw,44px)] transition-colors group-hover:text-accent">
                   {project.title}
                 </div>
-                <div className="mt-1.5 font-serif text-[19px] italic text-mut">
+                <div className="mt-1.5 font-serif text-[17px] italic text-mut sm:text-[19px]">
                   {project.subtitle}
                 </div>
               </div>

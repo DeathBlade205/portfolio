@@ -24,7 +24,24 @@ export default function Footer() {
           </span>
         </div>
 
-        <div className="flex gap-[22px]">
+        <div className="flex flex-col gap-1.5">
+          <a href="/work" className="transition-colors hover:text-paper">
+            WORK
+          </a>
+          <a href="/about" className="transition-colors hover:text-paper">
+            ABOUT
+          </a>
+          <a
+            href={profile.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-paper"
+          >
+            RESUME ↗
+          </a>
+        </div>
+
+        <div className="flex flex-col gap-1.5">
           <a
             href={profile.linkedin}
             target="_blank"

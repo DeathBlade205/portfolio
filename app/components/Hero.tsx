@@ -7,12 +7,12 @@ export default function Hero() {
       {/* spinning asterisk */}
       <div
         aria-hidden="true"
-        className="sg-spin pointer-events-none absolute right-5 top-10 select-none text-[80px] leading-none text-accent sm:right-10 sm:text-[120px]"
+        className="sg-spin pointer-events-none absolute right-5 top-14 select-none text-[56px] leading-none text-accent sm:right-10 sm:top-10 sm:text-[120px]"
       >
         ✶
       </div>
 
-      <p className="font-mono text-[12px] uppercase tracking-[0.22em] text-mut">
+      <p className="max-w-[calc(100%-70px)] font-mono text-[12px] uppercase tracking-[0.22em] text-mut sm:max-w-none">
         {profile.location} — {profile.role}
       </p>
 
@@ -24,7 +24,7 @@ export default function Hero() {
         </span>
       </h1>
 
-      <div className="mt-9 flex flex-wrap items-end justify-between gap-10 border-t border-line pt-[26px]">
+      <div className="mt-9 flex flex-wrap items-end justify-between gap-8 border-t border-line pt-[26px] sm:gap-10">
         <p className="m-0 max-w-[560px] font-serif text-[clamp(22px,2.6vw,34px)] italic leading-[1.25]">
           {profile.tagline}
         </p>

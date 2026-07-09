@@ -1,6 +1,6 @@
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
-import ProjectMedia from "../components/ProjectMedia";
+import LiveClock from "../components/LiveClock";
 import {
   profile,
   aboutIntro,
@@ -59,14 +59,64 @@ export default function AboutPage() {
                 GET IN TOUCH →
               </a>
               <a
-                href="/work"
+                href={profile.resume}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="rounded-full border border-ink px-[22px] py-[13px] font-mono text-[12px] tracking-[0.06em] text-ink transition-colors hover:bg-ink hover:text-paper"
+              >
+                RESUME ↗
+              </a>
+              <a
+                href="/work"
+                className="rounded-full border border-line px-[22px] py-[13px] font-mono text-[12px] tracking-[0.06em] text-mut transition-colors hover:border-ink hover:text-ink"
               >
                 SEE THE WORK
               </a>
             </div>
           </div>
-          <ProjectMedia src="/about/portrait.jpg" title="Sadat" />
+
+          {/* PROFILE CARD — editorial spec sheet in place of a portrait */}
+          <aside className="flex flex-col justify-between gap-10 rounded-[10px] border border-line bg-surf p-[26px] sm:p-[30px]">
+            <div className="flex items-start justify-between">
+              <span
+                aria-hidden="true"
+                className="sg-spin select-none text-4xl leading-none text-accent"
+              >
+                ✶
+              </span>
+              <span className="font-mono text-[11px] tracking-[0.16em] text-mut">
+                (PROFILE)
+              </span>
+            </div>
+
+            <div className="font-semibold leading-[0.95] tracking-[-0.02em] text-[clamp(34px,4vw,48px)]">
+              Sadat
+              <br />
+              <span className="font-serif font-normal italic">Sagar</span>
+            </div>
+
+            <div className="flex flex-col gap-[10px] font-mono text-[12px] tracking-[0.03em] text-mut">
+              <div className="flex justify-between gap-4 border-b border-line pb-[10px]">
+                <span>LOCATION</span>
+                <span className="text-ink">{profile.location}</span>
+              </div>
+              <div className="flex justify-between gap-4 border-b border-line pb-[10px]">
+                <span>LOCAL TIME</span>
+                <LiveClock className="text-ink" />
+              </div>
+              <div className="flex justify-between gap-4 border-b border-line pb-[10px]">
+                <span>STATUS</span>
+                <span className="inline-flex items-center gap-[7px] text-ink">
+                  <span className="sg-pulse h-[7px] w-[7px] rounded-full bg-accent" />
+                  AVAILABLE
+                </span>
+              </div>
+              <div className="flex justify-between gap-4">
+                <span>FOCUS</span>
+                <span className="text-ink">COMMERCE / FULL-STACK</span>
+              </div>
+            </div>
+          </aside>
         </section>
 
         {/* CAPABILITIES */}
